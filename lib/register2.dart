@@ -22,7 +22,7 @@ class _SignupsuccessState extends State<Signupsuccess> {
         padding: EdgeInsets.only(top: 80, left: 20, right: 20),
         child: Column(
           children: [
-            Image.asset("image/Frame.png"),
+            Image.asset("assets/image/Frame.png"),
 
             Container(
               padding: EdgeInsets.only(top: 20),

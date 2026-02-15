@@ -23,7 +23,7 @@ class AppBarCustom extends AppBar {
          centerTitle: true,
          leading: showBack
              ? IconButton(
-                 icon: Image.asset('image/back.png', width: 24, height: 24),
+                 icon: Image.asset('assets/image/back.png', width: 24, height: 24),
                  onPressed: () => Navigator.pop(context),
                )
              : null,

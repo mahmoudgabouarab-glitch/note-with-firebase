@@ -24,7 +24,7 @@ class _VeriftyState extends State<Verifty> {
             padding: EdgeInsets.only(top: 80, left: 20, right: 20),
             child: Column(
               children: [
-                Image.asset("image/Graphic2.png"),
+                Image.asset("assets/image/Graphic2.png"),
                 Container(
                   padding: EdgeInsets.only(top: 20),
                   child: Column(

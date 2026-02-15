@@ -20,12 +20,12 @@ class _FristpageState extends State<Fristpage> {
         padding: EdgeInsets.only(top: 80, left: 20, right: 20),
         child: Column(
           children: [
-            Image.asset("image/Graphic.png"),
+            Image.asset("assets/image/Graphic.png"),
             Container(
               padding: EdgeInsets.only(top: 20),
               child: Column(
                 children: [
-                  Image.asset("image/Icon.png"),
+                  Image.asset("assets/image/Icon.png"),
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
