@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Btn extends StatelessWidget {
   final void Function()? ontap;
-  final double radius;
+
   final String? text;
   final double? minWidth;
   final Color? color;
@@ -11,7 +12,7 @@ class Btn extends StatelessWidget {
   const Btn({
     super.key,
     required this.ontap,
-    required this.radius,
+
     this.text,
     this.minWidth,
     this.color,
@@ -21,14 +22,18 @@ class Btn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      
       minWidth: minWidth,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(radius),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
       onPressed: ontap,
-    //  color: color ?? AppColor.btn,
-      child: child ?? Center(child: Text(text ?? "")),
+      color: color ?? const Color(0xff665AF0),
+      child:
+          child ??
+          Center(
+            child: Text(
+              text ?? "",
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
     );
   }
 }
