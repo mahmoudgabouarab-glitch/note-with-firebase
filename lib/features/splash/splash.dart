@@ -4,8 +4,7 @@ import 'package:onlyproject/core/utils/app_assets.dart';
 import 'package:onlyproject/core/utils/extension.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
 import 'package:onlyproject/core/widgets/custom_button.dart';
-import 'package:onlyproject/login.dart';
-
+import 'package:onlyproject/features/auth/view/login_view.dart';
 class Splash extends StatelessWidget {
   const Splash({super.key});
 
@@ -21,7 +20,7 @@ class Splash extends StatelessWidget {
             spaceH(120),
             Btn(
               ontap: () {
-                context.pushAndRemoveUntil(Login());
+                context.pushAndRemoveUntil(LoginView());
               },
               text: "Get Started",
             ),
