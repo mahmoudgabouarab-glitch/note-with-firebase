@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:onlyproject/addnote.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
 import 'package:onlyproject/features/auth/view/login_view.dart';
+import 'package:onlyproject/features/auth/view/signup_view.dart';
 import 'package:onlyproject/features/splash/splash.dart';
 import 'package:onlyproject/homepage.dart';
 import 'package:onlyproject/register2.dart';
 import 'package:onlyproject/verifty.dart';
-import 'register.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           "add": (context) => Add(),
           "fristpage": (context) => Splash(),
           "login": (context) => LoginView(),
-          "register": (context) => Register(),
+          "register": (context) => SignupView(),
           "register2": (context) => Signupsuccess(),
           "verifty": (context) => Verifty(),
           "homepage": (context) => Homepage(),

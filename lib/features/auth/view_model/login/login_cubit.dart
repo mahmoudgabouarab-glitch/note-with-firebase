@@ -20,7 +20,7 @@ class LoginCubit extends Cubit<LoginState> {
       );
       emit(LoginSuccess());
     } on FirebaseAuthException catch (e) {
-      emit(LoginFailure(message: e.code.toString()));
+      emit(LoginFailure(message: e.code.replaceAll(RegExp(r'-'), ' ')));
     }
   }
 
@@ -39,7 +39,7 @@ class LoginCubit extends Cubit<LoginState> {
       await FirebaseAuth.instance.signInWithCredential(credential);
       emit(LoginSuccess());
     } on FirebaseAuthException catch (e) {
-      emit(LoginFailure(message: e.code.toString()));
+      emit(LoginFailure(message: e.code.replaceAll(RegExp(r'-'), ' ')));
     }
   }
 
@@ -49,7 +49,9 @@ class LoginCubit extends Cubit<LoginState> {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email.text);
       emit(ForgetPasswordSuccess());
     } on FirebaseAuthException catch (e) {
-      emit(ForgetPasswordFailure(message: e.code.toString()));
+      emit(
+        ForgetPasswordFailure(message: e.code.replaceAll(RegExp(r'-'), ' ')),
+      );
     }
   }
 
