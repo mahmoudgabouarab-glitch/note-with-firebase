@@ -5,8 +5,8 @@ import 'package:onlyproject/addnote.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
 import 'package:onlyproject/features/auth/view/login_view.dart';
 import 'package:onlyproject/features/auth/view/signup_view.dart';
+import 'package:onlyproject/features/home/presentation/view/home_view.dart';
 import 'package:onlyproject/features/splash/splash.dart';
-import 'package:onlyproject/homepage.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -29,14 +29,14 @@ class MyApp extends StatelessWidget {
         home:
             (FirebaseAuth.instance.currentUser != null &&
                 FirebaseAuth.instance.currentUser!.emailVerified)
-            ? Homepage()
+            ? HomeView()
             : Splash(),
         routes: {
           "add": (context) => Add(),
           "fristpage": (context) => Splash(),
           "login": (context) => LoginView(),
           "register": (context) => SignupView(),
-          "homepage": (context) => Homepage(),
+          "homepage": (context) => HomeView(),
         },
       ),
     );

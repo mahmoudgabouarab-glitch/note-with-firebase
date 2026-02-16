@@ -27,6 +27,30 @@ class SignupFileds extends StatelessWidget {
           ),
           spaceH(10),
           CustomTextFiled(
+            controller: cubit.phone,
+            hint: "phone",
+            keybordtype: TextInputType.phone,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "write your phone";
+              }
+              return null;
+            },
+          ),
+          spaceH(10),
+          CustomTextFiled(
+            controller: cubit.address,
+            hint: "address",
+            keybordtype: TextInputType.text,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "write your address";
+              }
+              return null;
+            },
+          ),
+          spaceH(10),
+          CustomTextFiled(
             controller: cubit.email,
             hint: "@email.com",
             keybordtype: TextInputType.emailAddress,

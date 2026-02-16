@@ -4,7 +4,7 @@ import 'package:onlyproject/core/utils/app_color.dart';
 import 'package:onlyproject/core/utils/extension.dart';
 import 'package:onlyproject/core/widgets/custom_snakbar.dart';
 import 'package:onlyproject/features/auth/view_model/login/login_cubit.dart';
-import 'package:onlyproject/homepage.dart';
+import 'package:onlyproject/features/home/presentation/view/home_view.dart';
 
 class LoginListen extends StatelessWidget {
   const LoginListen({super.key});
@@ -30,7 +30,7 @@ class LoginListen extends StatelessWidget {
               message: "Login successfully",
               type: SnackBarType.success,
             );
-            context.pushAndRemoveUntil(Homepage());
+            context.pushAndRemoveUntil(HomeView());
           case LoginFailure():
             context.popPage();
             CustomSnackBar.show(

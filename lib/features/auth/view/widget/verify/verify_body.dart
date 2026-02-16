@@ -9,7 +9,7 @@ import 'package:onlyproject/core/utils/function.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
 import 'package:onlyproject/core/widgets/custom_button.dart';
 import 'package:onlyproject/core/widgets/custom_snakbar.dart';
-import 'package:onlyproject/homepage.dart';
+import 'package:onlyproject/features/home/presentation/view/home_view.dart';
 
 class VerifyBody extends StatelessWidget {
   const VerifyBody({super.key});
@@ -39,7 +39,7 @@ class VerifyBody extends StatelessWidget {
                 ontap: () async {
                   await FirebaseAuth.instance.currentUser!.reload();
                   if (isVerify) {
-                    if (context.mounted) context.pushAndRemoveUntil(Homepage());
+                    if (context.mounted) context.pushAndRemoveUntil(HomeView());
                   } else {
                     CustomSnackBar.show(
                       context,
