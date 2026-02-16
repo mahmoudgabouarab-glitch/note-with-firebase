@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
 import 'package:onlyproject/core/utils/extension.dart';
 import 'package:onlyproject/core/widgets/custom_snakbar.dart';
+import 'package:onlyproject/features/auth/view/widget/verify_view.dart';
 import 'package:onlyproject/features/auth/view_model/signup/signup_cubit.dart';
-import 'package:onlyproject/register2.dart';
 
 class SignupListen extends StatelessWidget {
   const SignupListen({super.key});
@@ -30,7 +30,7 @@ class SignupListen extends StatelessWidget {
               message: "Signup successfully",
               type: SnackBarType.success,
             );
-            context.push(Signupsuccess());
+            context.push(VerifyView());
           case SignupFailure():
             context.popPage();
             CustomSnackBar.show(

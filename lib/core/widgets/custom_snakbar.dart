@@ -17,19 +17,19 @@ class CustomSnackBar {
     switch (type) {
       case SnackBarType.success:
         backgroundColor = AppColor.success;
-        icon = const Icon(Icons.check_circle, color: AppColor.textSecondary);
+        icon = const Icon(Icons.check_circle, color: AppColor.textbtn);
         break;
       case SnackBarType.error:
         backgroundColor = AppColor.error;
-        icon = const Icon(Icons.error, color: AppColor.textSecondary);
+        icon = const Icon(Icons.error, color: AppColor.textbtn);
         break;
       case SnackBarType.warning:
         backgroundColor = AppColor.primary;
-        icon = const Icon(Icons.warning, color: AppColor.textSecondary);
+        icon = const Icon(Icons.warning, color: AppColor.textbtn);
         break;
       default:
-        backgroundColor = AppColor.textSecondary;
-        icon = const Icon(Icons.info, color: AppColor.textSecondary);
+        backgroundColor = AppColor.textbtn;
+        icon = const Icon(Icons.info, color: AppColor.textbtn);
     }
 
     final snackBar = SnackBar(
@@ -45,7 +45,7 @@ class CustomSnackBar {
           Expanded(
             child: Text(
               message,
-              style: Styles.s16_500.copyWith(color: AppColor.textSecondary),
+              style: Styles.s16_500.copyWith(color: AppColor.textbtn),
             ),
           ),
         ],

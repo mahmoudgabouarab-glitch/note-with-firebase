@@ -7,8 +7,6 @@ import 'package:onlyproject/features/auth/view/login_view.dart';
 import 'package:onlyproject/features/auth/view/signup_view.dart';
 import 'package:onlyproject/features/splash/splash.dart';
 import 'package:onlyproject/homepage.dart';
-import 'package:onlyproject/register2.dart';
-import 'package:onlyproject/verifty.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,7 +18,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          appBarTheme: AppBarTheme(backgroundColor: AppColor.background),
+          appBarTheme: AppBarTheme(
+            backgroundColor: AppColor.background,
+            iconTheme: IconThemeData(color: AppColor.primary),
+          ),
           brightness: Brightness.light,
           fontFamily: "Roboto",
           scaffoldBackgroundColor: AppColor.background,
@@ -35,8 +36,6 @@ class MyApp extends StatelessWidget {
           "fristpage": (context) => Splash(),
           "login": (context) => LoginView(),
           "register": (context) => SignupView(),
-          "register2": (context) => Signupsuccess(),
-          "verifty": (context) => Verifty(),
           "homepage": (context) => Homepage(),
         },
       ),
