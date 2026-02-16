@@ -18,7 +18,7 @@ class HomeBody extends StatelessWidget {
           IconButton(
             onPressed: () async {
               GoogleSignIn momo = GoogleSignIn();
-              momo.disconnect(); //دي بتفصل التسجيل بجوجل علشان لما تسجل بجوجل تاني يديك الخيارات من الاول تاني هتسجل بانهي اكونت
+              momo.disconnect();
               Navigator.of(context).pushReplacementNamed("fristpage");
               await FirebaseAuth.instance.signOut();
             },
