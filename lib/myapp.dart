@@ -1,10 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:onlyproject/addnote.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
-import 'package:onlyproject/features/auth/view/login_view.dart';
-import 'package:onlyproject/features/auth/view/signup_view.dart';
 import 'package:onlyproject/features/home/presentation/view/home_view.dart';
 import 'package:onlyproject/features/splash/splash.dart';
 
@@ -31,13 +28,6 @@ class MyApp extends StatelessWidget {
                 FirebaseAuth.instance.currentUser!.emailVerified)
             ? HomeView()
             : Splash(),
-        routes: {
-          "add": (context) => Add(),
-          "fristpage": (context) => Splash(),
-          "login": (context) => LoginView(),
-          "register": (context) => SignupView(),
-          "homepage": (context) => HomeView(),
-        },
       ),
     );
   }
