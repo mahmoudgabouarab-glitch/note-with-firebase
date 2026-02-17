@@ -5,7 +5,7 @@ import 'package:onlyproject/core/utils/extension.dart';
 import 'package:onlyproject/core/widgets/custom_list_of_note.dart';
 import 'package:onlyproject/core/widgets/custom_loading.dart';
 import 'package:onlyproject/core/widgets/custom_show_bottom_sheet.dart';
-import 'package:onlyproject/features/home/presentation/view_model/cubit/presonal_note_cubit.dart';
+import 'package:onlyproject/features/home/presentation/view_model/presonal/presonal_note_cubit.dart';
 
 class PresonalNoteBody extends StatelessWidget {
   const PresonalNoteBody({super.key});

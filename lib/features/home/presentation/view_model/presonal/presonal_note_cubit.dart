@@ -8,10 +8,7 @@ part 'presonal_note_state.dart';
 
 class PresonalNoteCubit extends Cubit<PresonalNoteState> {
   PresonalNoteCubit() : super(PresonalNoteInitial());
-  var notes = FirebaseFirestore.instance
-      .collection(FB.notes)
-      .doc(FB.dPresonal)
-      .collection(FB.cPresonal);
+
   TextEditingController title = TextEditingController();
   TextEditingController subTitle = TextEditingController();
 
@@ -32,6 +29,10 @@ class PresonalNoteCubit extends Cubit<PresonalNoteState> {
   }
 
   Future<void> addNote() async {
+    var notes = FirebaseFirestore.instance
+        .collection(FB.notes)
+        .doc(FB.dPresonal)
+        .collection(FB.cPresonal);
     await notes.add({
       "id": FirebaseAuth.instance.currentUser!.uid,
       "title": title.text,

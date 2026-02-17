@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:onlyproject/core/widgets/custom_list_of_note.dart';
 import 'package:onlyproject/core/widgets/custom_show_bottom_sheet.dart';
 
-class AcademicNote extends StatelessWidget {
-  const AcademicNote({super.key});
+class BusinessNoteBody extends StatelessWidget {
+  const BusinessNoteBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class AcademicNote extends StatelessWidget {
         onPressed: () => CustomShowBottomSheet.show(context: context),
         child: Icon(Icons.edit),
       ),
-      appBar: AppBar(title: Text("Academic Note"), centerTitle: true),
+      appBar: AppBar(title: Text("Business Note"), centerTitle: true),
       // body: CustomListOfNote(
       //   title: 'Note subject',
       //   description: 'sddssdkldsklsdklsdkslksklsdk',

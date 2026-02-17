@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:onlyproject/core/widgets/custom_list_of_note.dart';
 import 'package:onlyproject/core/widgets/custom_show_bottom_sheet.dart';
 
-class FamilyNote extends StatelessWidget {
-  const FamilyNote({super.key});
+class OthersNoteBody extends StatelessWidget {
+  const OthersNoteBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class FamilyNote extends StatelessWidget {
         onPressed: () => CustomShowBottomSheet.show(context: context),
         child: Icon(Icons.edit),
       ),
-      appBar: AppBar(title: Text("Family Note"), centerTitle: true),
+      appBar: AppBar(title: Text("Others Note"), centerTitle: true),
       // body: CustomListOfNote(
       //   title: 'Note subject',
       //   description: 'sddssdkldsklsdklsdkslksklsdk',
