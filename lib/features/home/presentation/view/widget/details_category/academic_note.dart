@@ -13,10 +13,10 @@ class AcademicNote extends StatelessWidget {
         child: Icon(Icons.edit),
       ),
       appBar: AppBar(title: Text("Academic Note"), centerTitle: true),
-      body: CustomListOfNote(
-        title: 'Note subject',
-        description: 'sddssdkldsklsdklsdkslksklsdk',
-      ),
+      // body: CustomListOfNote(
+      //   title: 'Note subject',
+      //   description: 'sddssdkldsklsdklsdkslksklsdk',
+      // ),
     );
   }
 }

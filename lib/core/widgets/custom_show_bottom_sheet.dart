@@ -8,6 +8,8 @@ import 'package:onlyproject/core/widgets/custom_text_filed.dart';
 class CustomShowBottomSheet {
   static Future<T?> show<T>({
     required BuildContext context,
+    TextEditingController? titleController,
+    TextEditingController? subTitleController,
     void Function()? ontap,
   }) {
     return showModalBottomSheet<T?>(
@@ -44,11 +46,17 @@ class CustomShowBottomSheet {
                     children: [
                       Text("title"),
                       spaceH(8),
-                      CustomTextFiled(hint: "title"),
+                      CustomTextFiled(
+                        hint: "title",
+                        controller: titleController,
+                      ),
                       spaceH(20),
                       Text("subtitle"),
                       spaceH(8),
-                      CustomTextFiled(hint: "subtitle"),
+                      CustomTextFiled(
+                        hint: "subtitle",
+                        controller: subTitleController,
+                      ),
                       spaceH(30),
                       Center(
                         child: SizedBox(

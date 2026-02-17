@@ -14,7 +14,6 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-
   List data = [];
   getnotes() async {
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
@@ -22,8 +21,6 @@ class _HomepageState extends State<Homepage> {
         .where("id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .get();
     data.addAll(querySnapshot.docs);
-    
-
   }
 
   @override
@@ -44,7 +41,6 @@ class _HomepageState extends State<Homepage> {
       // ),
       // showBack: false,
       // title: "Home page",
-      
       body: ListView.builder(
         padding: EdgeInsets.all(10),
         itemCount: data.length,
@@ -67,13 +63,9 @@ class _HomepageState extends State<Homepage> {
                 btnCancelText: "Delete",
                 btnOkText: "Edit",
                 btnCancelOnPress: () async {
-                  /////////////////////علشان امسح اللى عامله
                   await FirebaseFirestore.instance
                       .collection("notes")
-                      .doc(
-                        data[index]
-                            .id /*دي علشان يحددالاي دي اللى هيتمسح بتاع كل كارد */,
-                      )
+                      .doc(data[index].id)
                       .delete();
                   Navigator.of(context).pushReplacementNamed("homepage");
                 },

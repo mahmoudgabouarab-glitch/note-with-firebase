@@ -3,7 +3,7 @@ import 'package:onlyproject/features/home/presentation/view/widget/details_categ
 import 'package:onlyproject/features/home/presentation/view/widget/details_category/business_note.dart';
 import 'package:onlyproject/features/home/presentation/view/widget/details_category/family_note.dart';
 import 'package:onlyproject/features/home/presentation/view/widget/details_category/others_note.dart';
-import 'package:onlyproject/features/home/presentation/view/widget/details_category/presonal_note.dart';
+import 'package:onlyproject/features/home/presentation/view/widget/details_category/presonal_note/presonal_note_view.dart';
 import 'package:onlyproject/features/home/presentation/view/widget/details_category/work_note.dart';
 
 class TitleCard {
@@ -17,7 +17,7 @@ List<TitleCard> titleCard = [
   TitleCard(
     title: "Personal Note",
     icon: Icons.note_alt_outlined,
-    screen: PresonalNote(),
+    screen: PresonalNoteView(),
   ),
   TitleCard(
     title: "Business Note",

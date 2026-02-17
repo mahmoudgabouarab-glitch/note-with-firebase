@@ -13,10 +13,10 @@ class FamilyNote extends StatelessWidget {
         child: Icon(Icons.edit),
       ),
       appBar: AppBar(title: Text("Family Note"), centerTitle: true),
-      body: CustomListOfNote(
-        title: 'Note subject',
-        description: 'sddssdkldsklsdklsdkslksklsdk',
-      ),
+      // body: CustomListOfNote(
+      //   title: 'Note subject',
+      //   description: 'sddssdkldsklsdklsdkslksklsdk',
+      // ),
     );
   }
 }

@@ -13,10 +13,10 @@ class BusinessNote extends StatelessWidget {
         child: Icon(Icons.edit),
       ),
       appBar: AppBar(title: Text("Business Note"), centerTitle: true),
-      body: CustomListOfNote(
-        title: 'Note subject',
-        description: 'sddssdkldsklsdklsdkslksklsdk',
-      ),
+      // body: CustomListOfNote(
+      //   title: 'Note subject',
+      //   description: 'sddssdkldsklsdklsdkslksklsdk',
+      // ),
     );
   }
 }

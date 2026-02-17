@@ -13,10 +13,10 @@ class OthersNote extends StatelessWidget {
         child: Icon(Icons.edit),
       ),
       appBar: AppBar(title: Text("Others Note"), centerTitle: true),
-      body: CustomListOfNote(
-        title: 'Note subject',
-        description: 'sddssdkldsklsdklsdkslksklsdk',
-      ),
+      // body: CustomListOfNote(
+      //   title: 'Note subject',
+      //   description: 'sddssdkldsklsdklsdkslksklsdk',
+      // ),
     );
   }
 }

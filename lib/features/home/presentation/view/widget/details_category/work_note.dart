@@ -13,10 +13,10 @@ class WorkNote extends StatelessWidget {
         child: Icon(Icons.edit),
       ),
       appBar: AppBar(title: Text("Work Note"), centerTitle: true),
-      body: CustomListOfNote(
-        title: 'Note subject',
-        description: 'sddssdkldsklsdklsdkslksklsdk',
-      ),
+      // body: CustomListOfNote(
+      //   title: 'Note subject',
+      //   description: 'sddssdkldsklsdklsdkslksklsdk',
+      // ),
     );
   }
 }
