@@ -1,18 +1,18 @@
 part of 'count_notes_cubit.dart';
 
-sealed class CountNotesState {}
+sealed class HomeNotesState {}
 
-final class CountNotesInitial extends CountNotesState {}
+final class HomeNotesInitial extends HomeNotesState {}
 
-final class CountNotesLoading extends CountNotesState {}
+final class HomeNotesLoading extends HomeNotesState {}
 
-final class CountNotesSuccess extends CountNotesState {
-  final List <int> count;
+final class HomeNotesSuccess extends HomeNotesState {
+  final List<int> count;
 
-  CountNotesSuccess({required this.count});
+  HomeNotesSuccess({required this.count});
 }
 
-final class CountNotesFailure extends CountNotesState {
+final class HomeNotesFailure extends HomeNotesState {
   final String message;
-  CountNotesFailure({required this.message});
+  HomeNotesFailure({required this.message});
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:onlyproject/customs/appbutton.dart';
+import 'package:onlyproject/core/widgets/custom_button.dart';
 import 'package:onlyproject/features/auth/view_model/login/login_cubit.dart';
 
 class LoginGoogleAction extends StatelessWidget {
@@ -8,9 +8,9 @@ class LoginGoogleAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppButton(
+    return Btn(
       text: "LogIn with Google",
-      onPressed: () => context.read<LoginCubit>().loginWithGoogle(),
+      ontap: () => context.read<LoginCubit>().loginWithGoogle(),
     );
   }
 }

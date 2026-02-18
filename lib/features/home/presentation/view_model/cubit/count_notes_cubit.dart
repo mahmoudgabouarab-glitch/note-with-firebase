@@ -6,11 +6,11 @@ import 'package:onlyproject/features/home/data/model/title_card.dart';
 
 part 'count_notes_state.dart';
 
-class CountNotesCubit extends Cubit<CountNotesState> {
-  CountNotesCubit() : super(CountNotesInitial());
+class HomeNotesCubit extends Cubit<HomeNotesState> {
+  HomeNotesCubit() : super(HomeNotesInitial());
 
   Future<void> getAllCounts() async {
-    emit(CountNotesLoading());
+    emit(HomeNotesLoading());
 
     try {
       List<int> counts = [];
@@ -26,9 +26,9 @@ class CountNotesCubit extends Cubit<CountNotesState> {
         counts.add(querySnapshot.docs.length);
       }
 
-      emit(CountNotesSuccess(count: counts));
+      emit(HomeNotesSuccess(count: counts));
     } catch (e) {
-      emit(CountNotesFailure(message: e.toString()));
+      emit(HomeNotesFailure(message: e.toString()));
     }
   }
 }
