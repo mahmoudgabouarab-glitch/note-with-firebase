@@ -18,18 +18,15 @@ dependencies:
   firebase_analytics: ^12.0.4
   firebase_auth: ^6.1.2
   google_sign_in: ^6.2.1
-  awesome_dialog: ^3.3.0
   cupertino_icons: ^1.0.8
-  pin_code_fields: ^8.0.1
   local_auth: ^3.0.0
   local_auth_android: ^2.0.0
-  pinput: ^5.0.2
-  image_picker: ^1.2.1
   flutter_bloc: ^9.1.1
   shared_preferences: ^2.5.4
   flutter_screenutil: ^5.9.3
   adaptive_dialog: ^2.6.0
   intl: ^0.20.2
+  equatable: ^2.0.8
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
@@ -43,7 +40,6 @@ flutter_launcher_icons:
 
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^5.0.0
 
 flutter:

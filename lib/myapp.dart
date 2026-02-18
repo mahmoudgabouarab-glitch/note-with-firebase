@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
             iconTheme: IconThemeData(color: AppColor.primary),
           ),
           brightness: Brightness.light,
-          fontFamily: "Roboto",
+         
           scaffoldBackgroundColor: AppColor.background,
         ),
         home: isLogin ? const HomeView() : const Splash(),

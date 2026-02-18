@@ -14,7 +14,6 @@ class SignupCubit extends Cubit<SignupState> {
   final TextEditingController password = TextEditingController();
   final TextEditingController confirmPassword = TextEditingController();
   final GlobalKey<FormState> key = GlobalKey<FormState>();
-  CollectionReference users = FirebaseFirestore.instance.collection('user');
 
   Future<void> signupWithEmailAndPassword() async {
     emit(SignupLoading());
@@ -26,7 +25,7 @@ class SignupCubit extends Cubit<SignupState> {
           );
       final uid = credential.user!.uid;
 
-      await users.doc(uid).set({
+      await FirebaseFirestore.instance.collection('user').doc(uid).set({
         'uid': uid,
         'name': userName.text,
         'phone': phone.text,
@@ -39,5 +38,16 @@ class SignupCubit extends Cubit<SignupState> {
     } on FirebaseAuthException catch (e) {
       emit(SignupFailure(message: e.code.replaceAll(RegExp(r'-'), ' ')));
     }
+  }
+
+  @override
+  Future<void> close() {
+    userName.dispose();
+    phone.dispose();
+    address.dispose();
+    email.dispose();
+    password.dispose();
+    confirmPassword.dispose();
+    return super.close();
   }
 }
