@@ -2,6 +2,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
+import 'package:onlyproject/core/utils/app_styles.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
 
 class CustomListOfNote extends StatelessWidget {
@@ -24,11 +25,14 @@ class CustomListOfNote extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
-        title: Text(title),
+        title: Text(title, style: Styles.s22_600),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(subtitle),
+            Text(
+              subtitle,
+              style: Styles.s16_600.copyWith(color: AppColor.textSubTitle),
+            ),
             spaceH(5),
             Text(
               DateFormat('d/M/yy - hh:mm a').format(date),

@@ -48,7 +48,7 @@ flutter:
   assets:
     - assets/image/
   fonts:
-    - family: Roboto
+    - family: Inter
       fonts:
-        - asset: assets/fonts/Roboto_SemiCondensed-MediumItalic.ttf
+        - asset: assets/fonts/Inder_Regular.ttf
 

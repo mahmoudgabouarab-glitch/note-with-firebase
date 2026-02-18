@@ -15,12 +15,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          fontFamily: "Inter",
           appBarTheme: AppBarTheme(
             backgroundColor: AppColor.background,
             iconTheme: IconThemeData(color: AppColor.primary),
           ),
           brightness: Brightness.light,
-         
+
           scaffoldBackgroundColor: AppColor.background,
         ),
         home: isLogin ? const HomeView() : const Splash(),

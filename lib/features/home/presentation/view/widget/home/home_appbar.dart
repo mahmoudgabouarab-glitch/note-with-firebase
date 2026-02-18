@@ -2,10 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:onlyproject/core/utils/app_styles.dart';
 import 'package:onlyproject/core/utils/extension.dart';
-
 import 'package:onlyproject/features/auth/view/login_view.dart';
 import 'package:onlyproject/features/auth/view_model/cubit/info_user_cubit.dart';
 
@@ -18,11 +17,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: BlocBuilder<InfoUserCubit, InfoUserState>(
         builder: (context, state) {
           if (state is InfoUserSuccess) {
-            return Text("Hello ${state.user.name}");
+            return Text("Hello ${state.user.name}", style: Styles.s22_600);
           } else if (state is InfoUserLoading) {
-            return const Text("Loading...");
+            return Text("Loading...", style: Styles.s22_600);
           } else {
-            return const Text("Hello World");
+            return Text("Hello World", style: Styles.s22_600);
           }
         },
       ),
