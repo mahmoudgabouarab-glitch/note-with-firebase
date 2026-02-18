@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onlyproject/core/network/constant_collection_fb.dart';
+import 'package:onlyproject/core/network/fire_base_helper.dart';
 
 part 'presonal_note_state.dart';
 
@@ -17,52 +17,41 @@ class PresonalNoteCubit extends Cubit<PresonalNoteState> {
   Future<void> getnotes() async {
     emit(PresonalNoteLoading());
     try {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection(FB.notes)
-          .doc(FB.dPresonal)
-          .collection(FB.cPresonal)
-          .where("id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-          .orderBy("createdAt", descending: true)
-          .get();
-      emit(PresonalNoteSuccess(data: querySnapshot.docs));
+      var querySnapshot = await FBHelper.getNote(
+        fBD: FB.dPresonal,
+        fBC: FB.cPresonal,
+      );
+      emit(PresonalNoteSuccess(data: querySnapshot));
     } on FirebaseException catch (e) {
       emit(PresonalNoteFailure(massage: e.code.replaceAll(RegExp(r'-'), ' ')));
     }
   }
 
   Future<void> addNote() async {
-    var notes = FirebaseFirestore.instance
-        .collection(FB.notes)
-        .doc(FB.dPresonal)
-        .collection(FB.cPresonal);
-    await notes.add({
-      "id": FirebaseAuth.instance.currentUser!.uid,
-      "title": title.text,
-      "subtitle": subTitle.text,
-      "createdAt": FieldValue.serverTimestamp(),
-    });
+    await FBHelper.addNote(
+      title: title.text,
+      subTitle: subTitle.text,
+      fBD: FB.dPresonal,
+      fBC: FB.cPresonal,
+    );
     await getnotes();
     title.clear();
     subTitle.clear();
   }
 
   Future<void> deletenote(String id) async {
-    await FirebaseFirestore.instance
-        .collection(FB.notes)
-        .doc(FB.dPresonal)
-        .collection(FB.cPresonal)
-        .doc(id)
-        .delete();
+    await FBHelper.deleteNote(id: id, fBD: FB.dPresonal, fBC: FB.cPresonal);
     await getnotes();
   }
 
   Future<void> updatenote(String id) async {
-    await FirebaseFirestore.instance
-        .collection(FB.notes)
-        .doc(FB.dPresonal)
-        .collection(FB.cPresonal)
-        .doc(id)
-        .update({"title": editTitle.text, "subtitle": editSubTitle.text});
+    await FBHelper.updateNote(
+      editTitle: editTitle.text,
+      editSubTitle: editSubTitle.text,
+      fBD: FB.dPresonal,
+      fBC: FB.cPresonal,
+      id: id,
+    );
     await getnotes();
     editTitle.clear();
     editSubTitle.clear();

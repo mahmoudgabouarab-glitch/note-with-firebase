@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
+import 'package:onlyproject/core/utils/function.dart';
 import 'package:onlyproject/features/home/presentation/view/home_view.dart';
 import 'package:onlyproject/features/splash/splash.dart';
 
@@ -23,11 +23,7 @@ class MyApp extends StatelessWidget {
           fontFamily: "Roboto",
           scaffoldBackgroundColor: AppColor.background,
         ),
-        home:
-            (FirebaseAuth.instance.currentUser != null &&
-                FirebaseAuth.instance.currentUser!.emailVerified)
-            ? HomeView()
-            : Splash(),
+        home: isLogin ? const HomeView() : const Splash(),
       ),
     );
   }

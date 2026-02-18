@@ -1,65 +1,56 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onlyproject/core/network/constant_collection_fb.dart';
+import 'package:onlyproject/core/network/fire_base_helper.dart';
 
 part 'academic_note_state.dart';
 
 class AcademicNoteCubit extends Cubit<AcademicNoteState> {
   AcademicNoteCubit() : super(AcademicNoteInitial());
-    TextEditingController title = TextEditingController();
+  TextEditingController title = TextEditingController();
   TextEditingController subTitle = TextEditingController();
- TextEditingController editTitle = TextEditingController();
+  TextEditingController editTitle = TextEditingController();
   TextEditingController editSubTitle = TextEditingController();
 
   Future<void> getnotes() async {
     emit(AcademicNoteLoading());
     try {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection(FB.notes)
-          .doc(FB.dAcademic)
-          .collection(FB.cAcademic)
-          .where("id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-          .orderBy("createdAt", descending: true)
-          .get();
-      emit(AcademicNoteSuccess(data: querySnapshot.docs));
+      var querySnapshot = await FBHelper.getNote(
+        fBD: FB.dAcademic,
+        fBC: FB.cAcademic,
+      );
+      emit(AcademicNoteSuccess(data: querySnapshot));
     } on FirebaseException catch (e) {
       emit(AcademicNoteFailure(massage: e.code.replaceAll(RegExp(r'-'), ' ')));
     }
   }
 
   Future<void> addNote() async {
-    var notes = FirebaseFirestore.instance
-        .collection(FB.notes)
-        .doc(FB.dAcademic)
-        .collection(FB.cAcademic);
-    await notes.add({
-      "id": FirebaseAuth.instance.currentUser!.uid,
-      "title": title.text,
-      "subtitle": subTitle.text,
-      "createdAt": FieldValue.serverTimestamp(),
-    });
-    await getnotes();title.clear();
+    await FBHelper.addNote(
+      title: title.text,
+      subTitle: subTitle.text,
+      fBD: FB.dAcademic,
+      fBC: FB.cAcademic,
+    );
+    await getnotes();
+    title.clear();
     subTitle.clear();
   }
 
   Future<void> deletenote(String id) async {
-    await FirebaseFirestore.instance
-        .collection(FB.notes)
-        .doc(FB.dAcademic)
-        .collection(FB.cAcademic)
-        .doc(id)
-        .delete();
+    await FBHelper.deleteNote(id: id, fBD: FB.dAcademic, fBC: FB.cAcademic);
     await getnotes();
   }
+
   Future<void> updatenote(String id) async {
-    await FirebaseFirestore.instance
-        .collection(FB.notes)
-        .doc(FB.dAcademic)
-        .collection(FB.cAcademic)
-        .doc(id)
-        .update({"title": editTitle.text, "subtitle": editSubTitle.text});
+    await FBHelper.updateNote(
+      editTitle: editTitle.text,
+      editSubTitle: editSubTitle.text,
+      fBD: FB.dAcademic,
+      fBC: FB.cAcademic,
+      id: id,
+    );
     await getnotes();
     editTitle.clear();
     editSubTitle.clear();
