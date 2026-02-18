@@ -11,6 +11,8 @@ class OthersNoteCubit extends Cubit<OthersNoteState> {
 
   TextEditingController title = TextEditingController();
   TextEditingController subTitle = TextEditingController();
+  TextEditingController editTitle = TextEditingController();
+  TextEditingController editSubTitle = TextEditingController();
 
   Future<void> getnotes() async {
     emit(OthersNoteLoading());
@@ -40,6 +42,8 @@ class OthersNoteCubit extends Cubit<OthersNoteState> {
       "createdAt": FieldValue.serverTimestamp(),
     });
     await getnotes();
+    title.clear();
+    subTitle.clear();
   }
 
   Future<void> deletenote(String id) async {
@@ -52,10 +56,24 @@ class OthersNoteCubit extends Cubit<OthersNoteState> {
     await getnotes();
   }
 
+  Future<void> updatenote(String id) async {
+    await FirebaseFirestore.instance
+        .collection(FB.notes)
+        .doc(FB.dOthers)
+        .collection(FB.cOthers)
+        .doc(id)
+        .update({"title": editTitle.text, "subtitle": editSubTitle.text});
+    await getnotes();
+    editTitle.clear();
+    editSubTitle.clear();
+  }
+
   @override
   Future<void> close() {
     title.dispose();
     subTitle.dispose();
+    editTitle.dispose();
+    editSubTitle.dispose();
     return super.close();
   }
 }

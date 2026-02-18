@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
@@ -7,13 +8,15 @@ class CustomListOfNote extends StatelessWidget {
   final String title;
   final String subtitle;
   final DateTime date;
-  final void Function() ontap;
+  final void Function() deleteNote;
+  final void Function() editaNote;
   const CustomListOfNote({
     required this.title,
     required this.subtitle,
     super.key,
     required this.date,
-    required this.ontap,
+    required this.deleteNote,
+    required this.editaNote,
   });
 
   @override
@@ -34,11 +37,27 @@ class CustomListOfNote extends StatelessWidget {
           ],
         ),
         trailing: IconButton(
-          onPressed: ontap,
-          color: AppColor.error,
-          icon: const Icon(Icons.delete_sweep_outlined),
+          onPressed: () async {
+            final result = await _showOkCancelAlertDialog(context);
+            if (result == OkCancelResult.ok) {
+              deleteNote();
+            } else if (result == OkCancelResult.cancel) {
+              editaNote();
+            }
+          },
+          color: AppColor.primary,
+          icon: const Icon(Icons.settings_suggest_outlined),
         ),
       ),
     );
   }
 }
+
+Future<OkCancelResult> _showOkCancelAlertDialog(BuildContext context) =>
+    showOkCancelAlertDialog(
+      context: context,
+      title: "What do you want to do?",
+      okLabel: "Delete",
+      cancelLabel: "Edit",
+      isDestructiveAction: true,
+    );

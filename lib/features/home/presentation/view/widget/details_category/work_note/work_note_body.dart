@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:onlyproject/core/utils/extension.dart';
 import 'package:onlyproject/core/widgets/custom_list_of_note.dart';
 import 'package:onlyproject/core/widgets/custom_loading.dart';
 import 'package:onlyproject/core/widgets/custom_show_bottom_sheet.dart';
@@ -19,10 +18,7 @@ class WorkNoteBody extends StatelessWidget {
           context: context,
           titleController: cubit.title,
           subTitleController: cubit.subTitle,
-          ontap: () {
-            cubit.addNote();
-            context.popPage();
-          },
+          ontap: () => cubit.addNote(),
         ),
         child: Icon(Icons.edit),
       ),
@@ -42,12 +38,25 @@ Widget _buildWorkNotes() {
             physics: const BouncingScrollPhysics(),
             itemCount: state.data.length,
             itemBuilder: (context, index) {
-              final cubit = state.data[index];
+              final oneNote = state.data[index];
+              final cubit = context.read<WorkNoteCubit>();
               return CustomListOfNote(
-                title: cubit['title'],
-                subtitle: cubit["subtitle"],
-                date: cubit["createdAt"].toDate(),
-                ontap: () => context.read<WorkNoteCubit>().deletenote(cubit.id),
+                title: oneNote['title'],
+                subtitle: oneNote["subtitle"],
+                date: oneNote["createdAt"].toDate(),
+                deleteNote: () =>
+                    context.read<WorkNoteCubit>().deletenote(oneNote.id),
+                editaNote: () {
+                  cubit.editTitle.text = oneNote['title'];
+                  cubit.editSubTitle.text = oneNote['subtitle'];
+                  CustomShowBottomSheet.show(
+                    titleController: cubit.editTitle,
+                    subTitleController: cubit.editSubTitle,
+                    context: context,
+                    isEdit: true,
+                    ontap: () => cubit.updatenote(oneNote.id),
+                  );
+                },
               );
             },
           ),

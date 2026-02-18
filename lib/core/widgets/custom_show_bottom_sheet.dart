@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
+import 'package:onlyproject/core/utils/extension.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
 import 'package:onlyproject/core/widgets/custom_button.dart';
 import 'package:onlyproject/core/widgets/custom_text_filed.dart';
@@ -11,6 +12,7 @@ class CustomShowBottomSheet {
     TextEditingController? titleController,
     TextEditingController? subTitleController,
     void Function()? ontap,
+    bool isEdit = false,
   }) {
     return showModalBottomSheet<T?>(
       useSafeArea: true,
@@ -61,7 +63,13 @@ class CustomShowBottomSheet {
                       Center(
                         child: SizedBox(
                           width: 150.w,
-                          child: Btn(ontap: ontap, text: "Add"),
+                          child: Btn(
+                            ontap: () {
+                              ontap!();
+                              context.popPage();
+                            },
+                            text: isEdit ? "Edit" : "Add",
+                          ),
                         ),
                       ),
                       spaceH(30),
