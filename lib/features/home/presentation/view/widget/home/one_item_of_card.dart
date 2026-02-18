@@ -7,7 +7,12 @@ import 'package:onlyproject/features/home/data/model/title_card.dart';
 
 class OneItemOfCard extends StatelessWidget {
   final TitleCard titleCard;
-  const OneItemOfCard({super.key, required this.titleCard});
+  final int state;
+  const OneItemOfCard({
+    super.key,
+    required this.titleCard,
+    required this.state,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +45,7 @@ class OneItemOfCard extends StatelessWidget {
                 spaceH(10),
                 Text(titleCard.title),
                 spaceH(5),
-                Text("30 Notes"),
+                Text("${state.toString()} Note"),
               ],
             ),
           ),
