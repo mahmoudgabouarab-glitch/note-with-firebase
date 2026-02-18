@@ -39,9 +39,9 @@ class CustomListOfNote extends StatelessWidget {
         trailing: IconButton(
           onPressed: () async {
             final result = await _showOkCancelAlertDialog(context);
-            if (result == OkCancelResult.ok) {
+            if (result == Result.remove) {
               deleteNote();
-            } else if (result == OkCancelResult.cancel) {
+            } else if (result == Result.edit) {
               editaNote();
             }
           },
@@ -53,11 +53,18 @@ class CustomListOfNote extends StatelessWidget {
   }
 }
 
-Future<OkCancelResult> _showOkCancelAlertDialog(BuildContext context) =>
-    showOkCancelAlertDialog(
+Future<Result?> _showOkCancelAlertDialog(BuildContext context) =>
+    showModalActionSheet<Result>(
+      style: AdaptiveStyle.iOS,
       context: context,
-      title: "What do you want to do?",
-      okLabel: "Delete",
-      cancelLabel: "Edit",
-      isDestructiveAction: true,
+      actions: [
+        SheetAction(label: "Edit", key: Result.edit),
+        SheetAction(
+          label: "Remove",
+          isDestructiveAction: true,
+          key: Result.remove,
+        ),
+      ],
     );
+
+enum Result { edit, remove }
