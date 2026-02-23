@@ -1,6 +1,7 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:onlyproject/core/network/local_notification_service.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
 import 'package:onlyproject/core/utils/app_styles.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
@@ -47,6 +48,12 @@ class CustomListOfNote extends StatelessWidget {
               deleteNote();
             } else if (result == Result.edit) {
               editaNote();
+            } else if (result == Result.remember) {
+              await LocalNotificationService.showBaseNotification();
+            } else if (result == Result.repeat) {
+              await LocalNotificationService.showRepeatNotification();
+            } else if (result == Result.cancel) {
+              await LocalNotificationService.cancelNotification();
             }
           },
           color: AppColor.primary,
@@ -68,7 +75,10 @@ Future<Result?> _showOkCancelAlertDialog(BuildContext context) =>
           isDestructiveAction: true,
           key: Result.remove,
         ),
+        SheetAction(label: "remember", key: Result.remember),
+        SheetAction(label: "Repeat", key: Result.repeat),
+        SheetAction(label: "Cancel", key: Result.cancel),
       ],
     );
 
-enum Result { edit, remove }
+enum Result { edit, remove, remember, repeat, cancel }
