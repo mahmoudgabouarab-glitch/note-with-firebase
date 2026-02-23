@@ -54,6 +54,8 @@ class CustomListOfNote extends StatelessWidget {
               await LocalNotificationService.showRepeatNotification();
             } else if (result == Result.cancel) {
               await LocalNotificationService.cancelNotification();
+            } else if (result == Result.schedule) {
+              await LocalNotificationService.showScheduleNotification();
             }
           },
           color: AppColor.primary,
@@ -78,7 +80,8 @@ Future<Result?> _showOkCancelAlertDialog(BuildContext context) =>
         SheetAction(label: "remember", key: Result.remember),
         SheetAction(label: "Repeat", key: Result.repeat),
         SheetAction(label: "Cancel", key: Result.cancel),
+        SheetAction(label: "Schedule", key: Result.schedule),
       ],
     );
 
-enum Result { edit, remove, remember, repeat, cancel }
+enum Result { edit, remove, remember, repeat, cancel, schedule }

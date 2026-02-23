@@ -1,5 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 class LocalNotificationService {
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -43,6 +44,27 @@ class LocalNotificationService {
       id: 1,
       title: 'title',
       body: 'Repeat',
+      notificationDetails: const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'channel id',
+          'channel name',
+          importance: Importance.max,
+          priority: Priority.high,
+          playSound: true,
+        ),
+      ),
+    );
+  }
+
+  // schedule notification
+  static Future<void> showScheduleNotification() async {
+    tz.initializeTimeZones();
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+      id: 2,
+      title: 'title',
+      body: 'Schedule',
+      scheduledDate: tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, 
       notificationDetails: const NotificationDetails(
         android: AndroidNotificationDetails(
           'channel id',
