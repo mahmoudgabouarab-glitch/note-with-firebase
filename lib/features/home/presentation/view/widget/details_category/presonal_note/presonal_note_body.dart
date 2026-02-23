@@ -41,6 +41,7 @@ Widget _buildPresonalNotes() {
               final oneNote = state.data[index];
               final cubit = context.read<PresonalNoteCubit>();
               return CustomListOfNote(
+                id: oneNote["noteId"],
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),

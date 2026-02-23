@@ -42,6 +42,7 @@ Widget _buildFamilyNotes() {
               final cubit = context.read<FamilyNoteCubit>();
 
               return CustomListOfNote(
+                id: oneNote["noteId"],
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),

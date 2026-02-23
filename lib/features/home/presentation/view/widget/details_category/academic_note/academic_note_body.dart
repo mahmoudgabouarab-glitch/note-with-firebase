@@ -42,6 +42,7 @@ Widget _buildAcademicNotes() {
               final cubit = context.read<AcademicNoteCubit>();
 
               return CustomListOfNote(
+                id: oneNote["noteId"],
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),

@@ -41,6 +41,7 @@ Widget _buildWorkNotes() {
               final oneNote = state.data[index];
               final cubit = context.read<WorkNoteCubit>();
               return CustomListOfNote(
+                id: oneNote["noteId"],
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),

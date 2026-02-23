@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:onlyproject/core/network/constant_collection_fb.dart';
 
 class FBHelper {
-
   // add note
   static Future<void> addNote({
     required String title,
@@ -11,11 +10,13 @@ class FBHelper {
     required String fBD,
     required String fBC,
   }) async {
+    final int notificationId = DateTime.now().millisecondsSinceEpoch ~/ 1000;
     var notes = FirebaseFirestore.instance
         .collection(FB.notes)
         .doc(fBD)
         .collection(fBC);
     await notes.add({
+      "noteId": notificationId,
       "id": FirebaseAuth.instance.currentUser!.uid,
       "title": title,
       "subtitle": subTitle,

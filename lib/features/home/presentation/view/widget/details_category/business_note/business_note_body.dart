@@ -42,6 +42,7 @@ Widget _buildBusinessNotes() {
               final cubit = context.read<BusinessNoteCubit>();
 
               return CustomListOfNote(
+                id: oneNote["noteId"],
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),

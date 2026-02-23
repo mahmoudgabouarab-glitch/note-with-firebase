@@ -1,6 +1,7 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+
 class LocalNotificationService {
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -37,13 +38,18 @@ class LocalNotificationService {
   }
 
   // repeat notification
-  static Future<void> showRepeatNotification() async {
+  static Future<void> showRepeatNotification({
+    required RepeatInterval repeatInterval,
+    required String title,
+    required String body,
+    required int id,
+  }) async {
     await flutterLocalNotificationsPlugin.periodicallyShow(
-      repeatInterval: RepeatInterval.everyMinute,
+      repeatInterval: repeatInterval,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      id: 1,
-      title: 'title',
-      body: 'Repeat',
+      id: id,
+      title: title,
+      body: body,
       notificationDetails: const NotificationDetails(
         android: AndroidNotificationDetails(
           'channel id',
@@ -63,8 +69,10 @@ class LocalNotificationService {
       id: 2,
       title: 'title',
       body: 'Schedule',
-      scheduledDate: tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, 
+      scheduledDate: tz.TZDateTime.now(
+        tz.local,
+      ).add(const Duration(seconds: 5)),
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       notificationDetails: const NotificationDetails(
         android: AndroidNotificationDetails(
           'channel id',
@@ -78,7 +86,7 @@ class LocalNotificationService {
   }
 
   // cancel notification
-  static Future<void> cancelNotification() async {
-    await flutterLocalNotificationsPlugin.cancel(id: 1);
+  static Future<void> cancelNotification({required int id}) async {
+    await flutterLocalNotificationsPlugin.cancel(id: id);
   }
 }
