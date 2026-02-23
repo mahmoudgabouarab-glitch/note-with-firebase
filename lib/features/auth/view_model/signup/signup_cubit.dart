@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,6 +33,7 @@ class SignupCubit extends Cubit<SignupState> {
         'address': address.text,
         'email': email.text,
         'createdAt': FieldValue.serverTimestamp(),
+        'token': await FirebaseMessaging.instance.getToken(),
       });
       await FirebaseAuth.instance.currentUser!.sendEmailVerification();
       emit(SignupSuccess());

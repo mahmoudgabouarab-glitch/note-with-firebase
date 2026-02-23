@@ -27,6 +27,7 @@ dependencies:
   adaptive_dialog: ^2.6.0
   intl: ^0.20.2
   equatable: ^2.0.8
+  flutter_local_notifications: ^20.1.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
