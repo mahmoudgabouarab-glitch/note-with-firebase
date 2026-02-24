@@ -46,8 +46,10 @@ Widget _buildBusinessNotes() {
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),
-                deleteNote: () =>
-                    context.read<BusinessNoteCubit>().deletenote(oneNote.id),
+                deleteNote: () => context.read<BusinessNoteCubit>().deletenote(
+                  oneNote.id,
+                  oneNote["noteId"],
+                ),
 
                 editaNote: () {
                   cubit.editTitle.text = oneNote['title'];

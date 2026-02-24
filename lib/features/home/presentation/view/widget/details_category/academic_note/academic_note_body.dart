@@ -46,8 +46,10 @@ Widget _buildAcademicNotes() {
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),
-                deleteNote: () =>
-                    context.read<AcademicNoteCubit>().deletenote(oneNote.id),
+                deleteNote: () => context.read<AcademicNoteCubit>().deletenote(
+                  oneNote.id,
+                  oneNote["noteId"],
+                ),
 
                 editaNote: () {
                   cubit.editTitle.text = oneNote['title'];

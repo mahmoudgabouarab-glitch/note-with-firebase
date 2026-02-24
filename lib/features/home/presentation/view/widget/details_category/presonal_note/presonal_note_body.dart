@@ -45,7 +45,8 @@ Widget _buildPresonalNotes() {
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),
-                deleteNote: () => cubit.deletenote(oneNote.id),
+                deleteNote: () =>
+                    cubit.deletenote(oneNote.id, oneNote["noteId"]),
                 editaNote: () {
                   cubit.editTitle.text = oneNote['title'];
                   cubit.editSubTitle.text = oneNote['subtitle'];

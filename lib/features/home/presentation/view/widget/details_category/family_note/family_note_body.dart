@@ -46,8 +46,10 @@ Widget _buildFamilyNotes() {
                 title: oneNote['title'],
                 subtitle: oneNote["subtitle"],
                 date: oneNote["createdAt"].toDate(),
-                deleteNote: () =>
-                    context.read<FamilyNoteCubit>().deletenote(oneNote.id),
+                deleteNote: () => context.read<FamilyNoteCubit>().deletenote(
+                  oneNote.id,
+                  oneNote["noteId"],
+                ),
                 editaNote: () {
                   cubit.editTitle.text = oneNote['title'];
                   cubit.editSubTitle.text = oneNote['subtitle'];

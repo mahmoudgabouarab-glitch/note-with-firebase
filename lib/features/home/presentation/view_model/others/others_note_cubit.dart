@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onlyproject/core/network/constant_collection_fb.dart';
 import 'package:onlyproject/core/network/fire_base_helper.dart';
+import 'package:onlyproject/core/network/local_notification_service.dart';
 
 part 'others_note_state.dart';
 
@@ -39,9 +40,10 @@ class OthersNoteCubit extends Cubit<OthersNoteState> {
     subTitle.clear();
   }
 
-  Future<void> deletenote(String id) async {
+  Future<void> deletenote(String id, int noteId) async {
     await FBHelper.deleteNote(id: id, fBD: FB.dOthers, fBC: FB.cOthers);
     await getnotes();
+    await LocalNotificationService.cancelNotification(id: noteId);
   }
 
   Future<void> updatenote(String id) async {
