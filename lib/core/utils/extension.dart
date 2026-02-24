@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 extension NavigationExtension on BuildContext {
   /// push
-  void push(Widget page) {
-    Navigator.of(this).push(MaterialPageRoute(builder: (_) => page));
+   Future<T?> push<T>(Widget page) {
+    return Navigator.of(this).push<T>(
+      MaterialPageRoute(builder: (_) => page),
+    );
   }
 
   /// push replacement

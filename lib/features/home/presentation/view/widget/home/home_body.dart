@@ -29,8 +29,9 @@ class HomeBody extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {
-                          context.push(titleCard[index].screen);
+                        onTap: () async {
+                          await context.push(titleCard[index].screen);
+                          if (!context.mounted) return;
                           context.read<HomeNotesCubit>().getAllCounts();
                         },
                         child: OneItemOfCard(
