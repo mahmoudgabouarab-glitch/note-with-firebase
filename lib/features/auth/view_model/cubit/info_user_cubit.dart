@@ -14,8 +14,23 @@ class InfoUserCubit extends Cubit<InfoUserState> {
           .collection("user")
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .get();
-
-      emit(InfoUserSuccess(user: UserModel.fromJson(querySnapshot.data()!)));
+      if (querySnapshot.exists && querySnapshot.data() != null) {
+        emit(InfoUserSuccess(user: UserModel.fromJson(querySnapshot.data()!)));
+      } else {
+        final firebaseUser = FirebaseAuth.instance.currentUser!;
+        emit(
+          InfoUserSuccess(
+            user: UserModel(
+              uid: firebaseUser.uid,
+              name: firebaseUser.displayName ?? "No Name",
+              email: firebaseUser.email ?? "No Email",
+              phone: 'No Phone',
+              address: 'No Address',
+              createdAt: DateTime.now(),
+            ),
+          ),
+        );
+      }
     } catch (e) {
       emit(InfoUserFailure(message: e.toString()));
     }

@@ -25,7 +25,9 @@ class UserModel extends Equatable {
       phone: json['phone'] ?? '',
       address: json['address'] ?? '',
       email: json['email'] ?? '',
-      createdAt: (json['createdAt'] as Timestamp).toDate(),
+      createdAt: json['createdAt'] != null
+          ? (json['createdAt'] as Timestamp).toDate()
+          : DateTime.now(),
     );
   }
 
