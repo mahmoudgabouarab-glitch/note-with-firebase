@@ -1,11 +1,12 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:intl/intl.dart';
 import 'package:onlyproject/core/network/local_notification_service.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
 import 'package:onlyproject/core/utils/app_styles.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class CustomListOfNote extends StatelessWidget {
   final String title;
@@ -100,10 +101,10 @@ Future<Result?> _showAlertDialog(BuildContext context) {
     style: AdaptiveStyle.iOS,
     context: context,
     actions: [
-      SheetAction(label: "Edit", key: Result.edit),
-      SheetAction(label: "Remember Me", key: Result.remember),
+      SheetAction(label: LocaleKeys.edit.tr(), key: Result.edit),
+      SheetAction(label: LocaleKeys.remember_me.tr(), key: Result.remember),
       SheetAction(
-        label: "Delete",
+        label: LocaleKeys.remove.tr(),
         isDestructiveAction: true,
         key: Result.remove,
       ),
@@ -116,12 +117,24 @@ Future<NotificationResult?> _showAlertDialogNotification(BuildContext context) {
     style: AdaptiveStyle.iOS,
     context: context,
     actions: [
-      SheetAction(label: "Every Minute", key: NotificationResult.everyMinute),
-      SheetAction(label: "Every Hour", key: NotificationResult.hourly),
-      SheetAction(label: "Every Day", key: NotificationResult.daily),
-      SheetAction(label: "Every Week", key: NotificationResult.weekly),
       SheetAction(
-        label: "Remove",
+        label: LocaleKeys.every_minute.tr(),
+        key: NotificationResult.everyMinute,
+      ),
+      SheetAction(
+        label: LocaleKeys.every_hour.tr(),
+        key: NotificationResult.hourly,
+      ),
+      SheetAction(
+        label: LocaleKeys.every_week.tr(),
+        key: NotificationResult.weekly,
+      ),
+      SheetAction(
+        label: LocaleKeys.every_day.tr(),
+        key: NotificationResult.daily,
+      ),
+      SheetAction(
+        label: LocaleKeys.remove.tr(),
         isDestructiveAction: true,
         key: NotificationResult.remove,
       ),

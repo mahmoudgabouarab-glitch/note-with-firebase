@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,7 @@ import 'package:onlyproject/core/utils/speacing.dart';
 import 'package:onlyproject/core/widgets/custom_button.dart';
 import 'package:onlyproject/core/widgets/custom_snakbar.dart';
 import 'package:onlyproject/features/home/presentation/view/home_view.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class VerifyBody extends StatelessWidget {
   const VerifyBody({super.key});
@@ -27,15 +29,15 @@ class VerifyBody extends StatelessWidget {
               Image.asset(AppAssets.verify),
               spaceH(100),
               Text(
-                "Verify your account",
+                LocaleKeys.verify_your_account.tr(),
                 style: Styles.s28_500.copyWith(color: AppColor.textPrimary),
               ),
               Text(
-                "please check your email",
+                LocaleKeys.please_check_your_email.tr(),
                 style: Styles.s16_500.copyWith(color: AppColor.textSubTitle),
               ),
               Btn(
-                text: "Verify",
+                text: LocaleKeys.verify.tr(),
                 ontap: () async {
                   await FirebaseAuth.instance.currentUser!.reload();
                   if (isVerify) {
@@ -43,7 +45,7 @@ class VerifyBody extends StatelessWidget {
                   } else {
                     CustomSnackBar.show(
                       context,
-                      message: "Check your email",
+                      message: LocaleKeys.check_your_email.tr(),
                       type: SnackBarType.error,
                     );
                   }

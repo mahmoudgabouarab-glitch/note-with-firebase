@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
@@ -5,6 +6,7 @@ import 'package:onlyproject/core/utils/extension.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
 import 'package:onlyproject/core/widgets/custom_button.dart';
 import 'package:onlyproject/core/widgets/custom_text_filed.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class CustomShowBottomSheet {
   static Future<T?> show<T>({
@@ -49,23 +51,23 @@ class CustomShowBottomSheet {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("title"),
+                        Text(LocaleKeys.title.tr()),
                         spaceH(8),
                         CustomTextFiled(
-                          hint: "title",
+                          hint: LocaleKeys.title.tr(),
                           controller: titleController,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "write your title";
+                              return LocaleKeys.write_your_title.tr();
                             }
                             return null;
                           },
                         ),
                         spaceH(20),
-                        Text("subtitle"),
+                        Text(LocaleKeys.subtitle.tr()),
                         spaceH(8),
                         CustomTextFiled(
-                          hint: "subtitle",
+                          hint: LocaleKeys.subtitle.tr(),
                           controller: subTitleController,
                         ),
                         spaceH(30),
@@ -78,7 +80,9 @@ class CustomShowBottomSheet {
                                 ontap!();
                                 context.popPage();
                               },
-                              text: isEdit ? "Edit" : "Add",
+                              text: isEdit
+                                  ? LocaleKeys.edit.tr()
+                                  : LocaleKeys.add.tr(),
                             ),
                           ),
                         ),

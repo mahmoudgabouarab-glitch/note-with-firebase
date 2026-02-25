@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onlyproject/core/widgets/custom_button.dart';
 import 'package:onlyproject/features/auth/view_model/signup/signup_cubit.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class SignupAction extends StatelessWidget {
   const SignupAction({super.key});
@@ -15,7 +17,7 @@ class SignupAction extends StatelessWidget {
           cubit.signupWithEmailAndPassword();
         }
       },
-      text: "Sign Up",
+      text: LocaleKeys.sign_up.tr(),
     );
   }
 }

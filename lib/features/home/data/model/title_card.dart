@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:onlyproject/core/network/constant_collection_fb.dart';
 import 'package:onlyproject/features/home/presentation/view/widget/details_category/academic_note/academic_note_view.dart';
@@ -6,6 +7,7 @@ import 'package:onlyproject/features/home/presentation/view/widget/details_categ
 import 'package:onlyproject/features/home/presentation/view/widget/details_category/others_note/others_note_view.dart';
 import 'package:onlyproject/features/home/presentation/view/widget/details_category/presonal_note/presonal_note_view.dart';
 import 'package:onlyproject/features/home/presentation/view/widget/details_category/work_note/work_note_view.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class TitleCard {
   String title;
@@ -22,44 +24,44 @@ class TitleCard {
   });
 }
 
-List<TitleCard> titleCard = [
+List<TitleCard> get titleCard => [
   TitleCard(
-    title: "Personal Note",
+    title: LocaleKeys.personal_note.tr(),
     icon: Icons.person_outline_sharp,
     screen: PresonalNoteView(),
     cPath: FB.cPresonal,
     docPath: FB.dPresonal,
   ),
   TitleCard(
-    title: "Business Note",
+    title: LocaleKeys.business_note.tr(),
     icon: Icons.attach_money,
     screen: BusinessNoteView(),
     cPath: FB.cBusiness,
     docPath: FB.dBusiness,
   ),
   TitleCard(
-    title: "Family Note",
+    title: LocaleKeys.family_note.tr(),
     icon: Icons.family_restroom_outlined,
     screen: FamilyNoteView(),
     cPath: FB.cFamily,
     docPath: FB.dFamily,
   ),
   TitleCard(
-    title: "Work Note",
+    title: LocaleKeys.work_note.tr(),
     icon: Icons.work_outline,
     screen: WorkNoteView(),
     cPath: FB.cWork,
     docPath: FB.dWork,
   ),
   TitleCard(
-    title: "Academic Note",
+    title: LocaleKeys.academic_note.tr(),
     icon: Icons.school_outlined,
     screen: AcademicNoteView(),
     cPath: FB.cAcademic,
     docPath: FB.dAcademic,
   ),
   TitleCard(
-    title: "Others Note",
+    title: LocaleKeys.others_note.tr(),
     icon: Icons.note_alt_outlined,
     screen: OthersNoteView(),
     cPath: FB.cOthers,

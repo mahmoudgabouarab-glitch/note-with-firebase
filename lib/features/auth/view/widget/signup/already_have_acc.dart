@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
 import 'package:onlyproject/core/utils/extension.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class AlreadyHaveAcc extends StatelessWidget {
   const AlreadyHaveAcc({super.key});
@@ -11,14 +13,17 @@ class AlreadyHaveAcc extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Already have account?",
+          LocaleKeys.already_have_account.tr(),
           style: TextStyle(color: AppColor.textPrimary),
         ),
         TextButton(
           onPressed: () {
             context.popPage();
           },
-          child: const Text("Login", style: TextStyle(color: AppColor.primary)),
+          child: Text(
+            LocaleKeys.login.tr(),
+            style: TextStyle(color: AppColor.primary),
+          ),
         ),
       ],
     );

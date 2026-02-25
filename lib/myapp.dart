@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
@@ -21,9 +22,12 @@ class MyApp extends StatelessWidget {
             iconTheme: IconThemeData(color: AppColor.primary),
           ),
           brightness: Brightness.light,
-
           scaffoldBackgroundColor: AppColor.background,
         ),
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        key: ValueKey(context.locale),
         home: isLogin ? const HomeView() : const Splash(),
       ),
     );

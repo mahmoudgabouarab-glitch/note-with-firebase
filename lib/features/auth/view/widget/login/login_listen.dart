@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
@@ -5,6 +6,7 @@ import 'package:onlyproject/core/utils/extension.dart';
 import 'package:onlyproject/core/widgets/custom_snakbar.dart';
 import 'package:onlyproject/features/auth/view_model/login/login_cubit.dart';
 import 'package:onlyproject/features/home/presentation/view/home_view.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class LoginListen extends StatelessWidget {
   const LoginListen({super.key});
@@ -27,7 +29,7 @@ class LoginListen extends StatelessWidget {
             context.popPage();
             CustomSnackBar.show(
               context,
-              message: "Login successfully",
+              message: LocaleKeys.login_successfully.tr(),
               type: SnackBarType.success,
             );
             context.pushAndRemoveUntil(HomeView());
@@ -50,7 +52,7 @@ class LoginListen extends StatelessWidget {
             context.popPage();
             CustomSnackBar.show(
               context,
-              message: "Check your email",
+              message: LocaleKeys.check_your_email.tr(),
               type: SnackBarType.success,
             );
           case ForgetPasswordFailure():
@@ -58,7 +60,7 @@ class LoginListen extends StatelessWidget {
             CustomSnackBar.show(
               context,
               message: state.message == "channel-error"
-                  ? "please wirte your email"
+                  ? LocaleKeys.please_write_your_email.tr()
                   : state.message,
               type: SnackBarType.error,
             );

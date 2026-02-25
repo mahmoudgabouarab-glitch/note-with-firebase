@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:onlyproject/core/widgets/custom_list_of_note.dart';
 import 'package:onlyproject/core/widgets/custom_loading.dart';
 import 'package:onlyproject/core/widgets/custom_show_bottom_sheet.dart';
 import 'package:onlyproject/features/home/presentation/view_model/academic/academic_note_cubit.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class AcademicNoteBody extends StatelessWidget {
   const AcademicNoteBody({super.key});
@@ -22,7 +24,7 @@ class AcademicNoteBody extends StatelessWidget {
         ),
         child: Icon(Icons.edit),
       ),
-      appBar: AppBar(title: Text("Academic Note"), centerTitle: true),
+      appBar: AppBar(title: Text(LocaleKeys.academic_note.tr()), centerTitle: true),
       body: _buildAcademicNotes(),
     );
   }

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
 import 'package:onlyproject/core/widgets/custom_text_filed.dart';
 import 'package:onlyproject/features/auth/view_model/signup/signup_cubit.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class SignupFileds extends StatelessWidget {
   const SignupFileds({super.key});
@@ -16,11 +18,11 @@ class SignupFileds extends StatelessWidget {
         children: [
           CustomTextFiled(
             controller: cubit.userName,
-            hint: "user name",
+            hint: LocaleKeys.user_name.tr(),
             keybordtype: TextInputType.name,
             validator: (value) {
               if (value!.isEmpty) {
-                return "write your name";
+                return LocaleKeys.write_your_name.tr();
               }
               return null;
             },
@@ -28,11 +30,11 @@ class SignupFileds extends StatelessWidget {
           spaceH(10),
           CustomTextFiled(
             controller: cubit.phone,
-            hint: "phone",
+            hint: LocaleKeys.phone.tr(),
             keybordtype: TextInputType.phone,
             validator: (value) {
               if (value!.isEmpty) {
-                return "write your phone";
+                return LocaleKeys.write_your_phone.tr();
               }
               return null;
             },
@@ -40,11 +42,11 @@ class SignupFileds extends StatelessWidget {
           spaceH(10),
           CustomTextFiled(
             controller: cubit.address,
-            hint: "address",
+            hint: LocaleKeys.address.tr(),
             keybordtype: TextInputType.text,
             validator: (value) {
               if (value!.isEmpty) {
-                return "write your address";
+                return LocaleKeys.write_your_address.tr();
               }
               return null;
             },
@@ -52,11 +54,11 @@ class SignupFileds extends StatelessWidget {
           spaceH(10),
           CustomTextFiled(
             controller: cubit.email,
-            hint: "@email.com",
+            hint: LocaleKeys.email_hint.tr(),
             keybordtype: TextInputType.emailAddress,
             validator: (value) {
               if (value!.isEmpty) {
-                return "write your email";
+                return LocaleKeys.write_your_email.tr();
               }
               return null;
             },
@@ -64,11 +66,11 @@ class SignupFileds extends StatelessWidget {
           spaceH(10),
           CustomTextFiled(
             controller: cubit.password,
-            hint: "********",
+            hint: LocaleKeys.password_hint.tr(),
             obscureText: true,
             validator: (value) {
               if (value!.isEmpty) {
-                return "write your password";
+                return LocaleKeys.write_your_password.tr();
               }
               return null;
             },
@@ -76,14 +78,14 @@ class SignupFileds extends StatelessWidget {
           spaceH(10),
           CustomTextFiled(
             controller: cubit.confirmPassword,
-            hint: "********",
+            hint: LocaleKeys.password_hint.tr(),
             obscureText: true,
             validator: (value) {
               if (value!.isEmpty) {
-                return "write your password";
+                return LocaleKeys.write_your_password.tr();
               }
               if (value != cubit.password.text) {
-                return "not the same ";
+                return LocaleKeys.not_the_same.tr();
               }
               return null;
             },

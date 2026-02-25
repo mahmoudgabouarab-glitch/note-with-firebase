@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:onlyproject/core/widgets/custom_list_of_note.dart';
 import 'package:onlyproject/core/widgets/custom_loading.dart';
 import 'package:onlyproject/core/widgets/custom_show_bottom_sheet.dart';
 import 'package:onlyproject/features/home/presentation/view_model/business/business_note_cubit.dart';
+import 'package:onlyproject/generated/locale_keys.g.dart';
 
 class BusinessNoteBody extends StatelessWidget {
   const BusinessNoteBody({super.key});
@@ -22,7 +24,7 @@ class BusinessNoteBody extends StatelessWidget {
         ),
         child: Icon(Icons.edit),
       ),
-      appBar: AppBar(title: Text("Business Note"), centerTitle: true),
+      appBar: AppBar(title: Text(LocaleKeys.business_note.tr()), centerTitle: true),
       body: _buildBusinessNotes(),
     );
   }

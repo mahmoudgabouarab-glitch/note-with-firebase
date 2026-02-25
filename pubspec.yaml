@@ -29,6 +29,7 @@ dependencies:
   equatable: ^2.0.8
   flutter_local_notifications: ^20.1.0
   timezone: ^0.10.1
+  easy_localization: ^3.0.8
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
@@ -49,8 +50,8 @@ flutter:
 
   assets:
     - assets/image/
+    - assets/translations/
   fonts:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inder_Regular.ttf
-
