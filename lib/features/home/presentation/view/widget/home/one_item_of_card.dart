@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:onlyproject/core/utils/app_assets.dart';
 import 'package:onlyproject/core/utils/app_color.dart';
 import 'package:onlyproject/core/utils/app_styles.dart';
+import 'package:onlyproject/core/utils/function.dart';
 import 'package:onlyproject/core/utils/speacing.dart';
 import 'package:onlyproject/features/home/data/model/title_card.dart';
 import 'package:onlyproject/generated/locale_keys.g.dart';
@@ -22,7 +23,9 @@ class OneItemOfCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AppAssets.homecard),
+          image: AssetImage(
+            isArabic(context) ? AppAssets.homecarda : AppAssets.homecarde,
+          ),
           fit: BoxFit.cover,
         ),
       ),
@@ -30,7 +33,8 @@ class OneItemOfCard extends StatelessWidget {
         children: [
           Positioned(
             top: 20.h,
-            left: 20.w,
+            left: isArabic(context) ? null : 20.w,
+            right: isArabic(context) ? 20.w : null,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -48,7 +52,10 @@ class OneItemOfCard extends StatelessWidget {
                 spaceH(10),
                 Text(titleCard.title, style: Styles.s16_600),
                 spaceH(5),
-                Text("${state.toString()} ${LocaleKeys.note_count.tr()  }", style: Styles.s14_600),
+                Text(
+                  "${state.toString()} ${LocaleKeys.note_count.tr()}",
+                  style: Styles.s14_600,
+                ),
               ],
             ),
           ),

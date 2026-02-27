@@ -3,5 +3,6 @@ class AppAssets {
   static const String logoApp = 'assets/image/logoapp.png';
   static const String authLogo = 'assets/image/authlogo.png';
   static const String verify = "assets/image/Graphic2.png";
-  static const String homecard = "assets/image/homecard.png";
+  static const String homecarde = "assets/image/homecarde.png";
+  static const String homecarda = "assets/image/homecarda.png";
 }

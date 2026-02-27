@@ -31,20 +31,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
       ),
       actions: [
-        PopupMenuButton<String>(
-          padding: EdgeInsets.zero,
-          icon: Icon(Icons.language, size: 18.sp),
-          onSelected: (value) {
-            if (value == 'ar') {
+        Switch(
+          value: context.locale.languageCode == 'ar',
+          onChanged: (value) {
+            if (value) {
               context.setLocale(const Locale('ar'));
             } else {
               context.setLocale(const Locale('en'));
             }
           },
-          itemBuilder: (context) => [
-            PopupMenuItem(value: 'ar', child: Text(LocaleKeys.arabic.tr())),
-            PopupMenuItem(value: 'en', child: Text(LocaleKeys.english.tr())),
-          ],
+          activeThumbColor: const Color(0xff665AF0),
         ),
         IconButton(
           onPressed: () async {
